@@ -1,5 +1,7 @@
 # wait-events
 
+[![Build Status](https://travis-ci.org/olalonde/wait-events.svg?branch=master)](https://travis-ci.org/olalonde/wait-events)
+
 Turn a complex [event emitter](https://nodejs.org/api/events.html) into a simple [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
 ## Install
