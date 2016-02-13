@@ -10,6 +10,16 @@ Turn a complex [event emitter](https://nodejs.org/api/events.html) into a simple
 npm install --save wait-events
 ```
 
+## How it works?
+
+waitEvents attaches event listeners to the emitter and as soon as one
+of them is called, it detaches the listeners and resolves or rejects
+the promise.
+
+Event emitters are powerful but sometimes badly implemented or poorly
+documented. You should generally not use this library but it's there if
+you need to.
+
 ## Usage
 
 waitEvents(emitter, [ ...successEvents ], [ ...errorEvents ]) => promise
@@ -36,5 +46,16 @@ waitEvents(slack, [
 })
 
 slack.start()
+```
+
+You can also chain things like this:
+
+```javascript
+waitEvents(httpServer, [ 'connect' ]).then(() => {
+  console.log('first http connection to server!')
+  return waitEvents(httpServer, [ 'connect' ]).then(() => {
+    console.log('second http connection to server!')
+  })
+})
 ```
 
